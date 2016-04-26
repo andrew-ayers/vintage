@@ -1,0 +1,1 @@
+pkzip -eX -p -r BLASTLIB.ZIP *.*

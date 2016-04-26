@@ -1,0 +1,61 @@
+The Wormhole has been closed for 20 years...
+
+The deadly creatures that came forth from it have been
+repelled - the Horde is no more...
+
+   "This is an urgent, all frequency emergency broadcast
+    message!"
+
+   "We are under attack! Our position is sector 2-9a
+    Delta..."
+
+   "My God! They're everywhere... We can't hold them off!"
+
+   "May Day, May Da..."
+
+   <static>
+
+That was the last message heard from MinCorp's flagship
+carrier, the Sphinx. The haul was reported to be several
+million kilos of pure Xibodnium...
+
+***
+
+You have been dispatched to wipe out what is hoped to be
+last remnant of the Horde from the Xibodnium rich Delta
+Sector. Horde nanobots were left in the Delta sector to
+create fast gatherer ships. These gatherer ships, now
+known only as the Swarm, were designed to pick up free
+floating Xibodnium crystals, and transport them back
+through the Wormhole to the Horde's base. But the Worm-
+hole is gone, and the Swarm have set about reconstruct-
+ing it, using Xibodnium for power! Stop them before it
+is too late!
+
+***
+
+1. Collect Xibodnium by shooting asteroids to break them
+   up and release Xibodnium crystals. Catch crystals as
+   they drift by. Points accumulated for each crystal
+   caught, as well as power units.
+
+2. 25 crystals caught gives one smart bomb. 3 smart bombs
+   also float free through the sector. When a smartbomb is
+   detonated, all on the screen is destroyed (Swarm, ast-
+   eroids, crystals).
+
+3. Swarm ships go after free floating Xibodnium crystals,
+   also. If a threat is perceived, swarm ships attack the
+   threat, unless Xibodnium is in hand, at which point they
+   run to the wormhole site to deposit the Xibodnium. If
+   swarm collects 100 crystals, wormhole is complete, and
+   opens...
+
+4. When attacking, swarm ships come directly at threat,
+   kamakazi style, hitting the threat until dead.
+
+5. Your ship has a limited amount of power for thrusters,
+   weapons and shields.
+
+6. Shields cause EVERYTHING to bounce away, taking energy
+   from shield...

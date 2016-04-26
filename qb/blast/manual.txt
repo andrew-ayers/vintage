@@ -1,0 +1,37 @@
+August 21st, 1998
+------------------------------------------------------------------------------
+                                Introduction
+------------------------------------------------------------------------------
+The Blast! Library started out at first with an experiment to see if it were
+possible to create and manipulate an area of RAM as if it were the 64000
+bytes of video ram used by mode 13h. Initially, I wanted to do this to elim-
+inate flicker in mode 13h, so that sprite routines and the like could be used
+to create decent video games under QuickBasic. As I worked with the page
+flip routine I had developed (I was also learning assembler integration for
+QuickBasic), I created sprite manipulation routines in BASIC. They worked
+pretty well, but even after I optimized them as far as I could, I still
+wanted them to go faster. I figured if I could do a page flip in assembler,
+why not sprite routines as well? More functions were added, until you have
+what you see here - the Blast! Library.
+
+Many people have experimented with the Blast! Library, some have even written
+games utilising it. I haven't seen any commercial publications written yet,
+but who knows? I was trying to do an experiment - and it snowballed...
+
+Ever since I released the Blast! Library, people have asked me how to use it.
+I have tried to make the demos as clear as possible, but for a lot of people,
+this isn't enough. After much prodding, and pleading by those folks, I have
+decided to release this as the first manual to using the Blast! Library.
+------------------------------------------------------------------------------
+DECLARE SUB InitLib ()
+
+
+DECLARE SUB BlastGet (dsegment%, doffset%, ssegment%, soffset%, x1%, y1%, x2%, y2%)
+DECLARE SUB BlastPut (dsegment%, doffset%, ssegment%, soffset%, xpos%, ypos%, icol%)
+DECLARE SUB BlastPset (segment%, offset%, xpos%, ypos%, col%)
+DECLARE FUNCTION BlastPoint% (segment%, offset%, xpos%, ypos%)
+DECLARE SUB BlastCopy (fsegment%, foffset%, tsegment%, toffset%)
+DECLARE SUB BlastScroll (fsegment%, foffset%, tsegment%, toffset%, xoffset%, yoffset%)
+DECLARE SUB BlastCLS (segment%, offset%, col%)
+DECLARE SUB BlastPrint (segment%, offset%, xpos%, ypos%, text$, col%)
+DECLARE SUB BlastLine (dsegment%, doffset%, x1%, y1%, x2%, y2%, colr%)

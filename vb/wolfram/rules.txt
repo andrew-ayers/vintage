@@ -1,0 +1,324 @@
+Description of VB Demo of Wolfram's 1D Cellular Automata
+--------------------------------------------------------
+
+This demo of Wolfram's 1D Cellular Automata was coded by
+Andrew L. Ayers. 
+
+Where to start - well, I believe I first read about
+Stephen Wolfram's "A New Kind of Science" in a discussion
+on Slashdot, sometime either late in 2001, or possibly
+early 2002. Then I promptly forgot about it. On November
+9th, 2002, I read an old copy of Wired magazine (June or
+July 2002 - I forget which) detailing the planned release
+of Mr. Wolfram's new book in May (due to magazine publishing
+lead times, by the time the article came out, it was after
+the period described). So, I figured that the book was out
+and it intrigued me enough (despite it's alleged size) that
+I wanted to read it for myself.
+
+Now, upon reading the Wired article, I had the recollection
+that I may have read a REALLY old Wired article regarding
+Stephen Wolfram and his work (which was to become ANKOS)
+back in the early 1990's, when Wired first appeared on the
+scene. I don't know this for certain, I will need to check.
+
+At any rate, I went out and purchased the book the following
+day. I managed to find a copy, the only copy Barnes and Noble
+bookstore had. I found that it was quite big, and quite heavy,
+just as the article recounted. I was also amazed by the price:
+For a tome this size (think large textbook, 1200 pages or so,
+with at least a 50 page index), and hardbound - it was only
+$45.00! Seems to be unheard of - especially since the cost to
+publish it (according to the 2002 Wired article) was around
+$15.00 per copy - Mr. Wolfram is by no means making money off
+of this venture (not a lot, anyway) - which goes to show his
+goals and aim: To get this information into the hands of a
+lot of people.
+
+I don't know if I am one who he had in mind - but I started
+to read the book that night (last night, actually). I didn't
+get too far, as I had to sleep in order to go to work the
+following day - but I was very intrigued by what I did read,
+and it should provide me with a ton of entertaining nights
+over the course of the next few months (I am not a speed
+reader by any means - my wife and I have a bet going that I
+won't finish it in a year).
+
+So, this morning I set out (perhaps prematurely) to create a
+VB demo of the "simple rules" of Wolfram's 1D cellular automata,
+to see what it does.
+
+The demo that I have created I believe is fairly close to what
+it should be, considering all I have to go on is a review done
+by Ray Kurzweil. I got the review at the following address:
+
+http://www.kurzweilai.net/articles/art0464.html?printable=1
+
+And I have reproduced it below as well for convenience, or if
+the site moves.
+
+I don't know if my code is correct, but it does seem to run, and
+produce some funky output - output that looks just like the images
+I have seen, quite closely, in fact. I will probably reproduce
+this code in ECMAscript at some point, once I get further on in
+my reading of the book. The ruleset is based on the description
+given by Ray Kurzweil of Wolfram's automata:
+
+Inputs  0 1 2 
+------  - - -
+000     0 0 0
+001     0 0 0
+010     0 0 0
+011     0 0 0
+100     0 0 0
+101     0 0 0
+110     0 0 1
+111     0 1 0
+
+So, on the left are the 8 possible combos of inputs (with the center
+bit being the bit under scrutiny, along with "left" and "right"
+neighboring bits.
+
+The program works by first setting a pixel on the first line. Then it
+loops for each line after the first one, plotting each pixel on the
+current line by performing the ruleset transform based on the pixel on
+the line immediately above. First, the pattern is found, then the
+ruleset is applied (0-255, for 256 rules), by building a bitmask with
+the pattern found (thus, if it is pattern 3 above - ie "010", then the
+bitmask is "00100000"), then this pattern is "AND"ed with the binary
+value of the ruleset - if the resulting output is true, then the pixel
+is plotted, otherwise it is skipped.
+
+This is the basic workings of it - there are extra features (such as
+different methods, etc on comparisons of the rules, etc - they are all
+similar to one another, but I had to make them because I don't know
+if my version is the way it should be, or if one of the "mirrored" or
+"inverted" versions are more correct),  but they all work similar to
+the standard method encoded into this demo.
+
+I must stress that this demo is by no means necessarily correct. It may
+or may not work the same as the Mathematica versions Wolfram supplys.
+Any errors in this demo are therefore my own, and should not reflect as
+problems in Wolfram's research, but rather are problems in my code. As
+such, do not rely on this demo for research purposes, it is better to
+use Wolfram's Mathematica examples. Unfortunately, I am not a mathematician
+of any sort, so I don't know what, if anything I have wrong. As I study
+the book, I hope my errors will come to light.
+
+At some point, I would like to try to make a 2D version of this system,
+and expand upon this 1D automata demo, and see what it makes. Already,
+this 1D system is impressive - it does produce things with bilateral
+symmetry - I hope a 2D version produces radial patterns, like snowflakes
+and starfish.
+
+I hope Wolfram's ideas take off soon...
+
+----
+
+Regarding the demo - check out the following rule numbers under Run Method
+number 1 (other run methods may or may not produce similar output - play
+with it):
+
+
+Class 3 Rules:
+
+18, 22, 26, 60, 73, 82, 90, 102, 105 (beautiful), 126, 129, 146, 150, 151,
+153, 154, 161, 165 (beautiful), 182, 183, 195, 210, 218
+
+Class 4 Rules:
+
+30, 45, 75, 86, 89 (cool), 101, 110, 124, 135, 137, 149, 167 (actually,
+this one could fit into ALL three categories), 169, 181 (similar to 167),
+193, 225
+
+Other Rules (Class 2 or 1?):
+
+57, 99
+
+----
+
+Reflections on Stephen Wolfram's "A New Kind of Science"
+by   Ray Kurzweil
+
+In his remarkable new book, Stephen Wolfram asserts that cellular automata operations underlie much of the real world. He even asserts that the entire Universe itself is a big cellular-automaton computer. But Ray Kurzweil challenges the ability of these ideas to fully explain the complexities of life, intelligence, and physical phenomena.
+
+
+Stephen Wolfram's A New Kind of Science is an unusually wide-ranging book covering issues basic to biology, physics, perception, computation, and philosophy. It is also a remarkably narrow book in that its 1,200 pages discuss a singular subject, that of cellular automata. Actually, the book is even narrower than that. It is principally about cellular automata rule 110 (and three other rules which are equivalent to rule 110), and its implications.
+
+It's hard to know where to begin in reviewing Wolfram's treatise, so I'll start with Wolfram's apparent hubris, evidenced in the title itself. A new science would be bold enough, but Wolfram is presenting a new kind of science, one that should change our thinking about the whole enterprise of science. As Wolfram states in chapter 1, "I have come to view [my discovery] as one of the more important single discoveries in the whole history of theoretical science."1
+
+This is not the modesty that we have come to expect from scientists, and I suspect that it may earn him resistance in some quarters. Personally, I find Wolfram's enthusiasm for his own ideas refreshing. I am reminded of a comment made by the Buddhist teacher Guru Amrit Desai, when he looked out of his car window and saw that he was in the midst of a gang of Hell's Angels. After studying them in great detail for a long while, he finally exclaimed, "They really love their motorcycles." There was no disdain in this observation. Guru Desai was truly moved by the purity of their love for the beauty and power of something that was outside themselves.
+
+Well, Wolfram really loves his cellular automata. So much so, that he has immersed himself for over ten years in the subject and produced what can only be regarded as a tour de force on their mathematical properties and potential links to a broad array of other endeavors. In the end notes, which are as extensive as the book itself, Wolfram explains his approach: "There is a common style of understated scientific writing to which I was once a devoted subscriber. But at some point I discovered that more significant results are usually incomprehensible if presented in this style…. And so in writing this book I have chosen to explain straightforwardly the importance I believe my various results have."2 Perhaps Wolfram's successful technology business career may also have had its influence here, as entrepreneurs are rarely shy about articulating the benefits of their discoveries.
+
+So what is the discovery that has so excited Wolfram? As I noted above, it is cellular automata rule 110, and its behavior. There are some other interesting automata rules, but rule 110 makes the point well enough. A cellular automaton is a simple computational mechanism that, for example, changes the color of each cell on a grid based on the color of adjacent (or nearby) cells according to a transformation rule. Most of Wolfram's analyses deal with the simplest possible cellular automata, specifically those that involve just a one-dimensional line of cells, two possible colors (black and white), and rules based only on the two immediately adjacent cells. For each transformation, the color of a cell depends only on its own previous color and that of the cell on the left and the cell on the right. Thus there are eight possible input situations (i.e., three combinations of two colors). Each rule maps all combinations of these eight input situations to an output (black or white). So there are 28 = 256 possible rules for such a one-dimensional, two-color, adjacent-cell automaton. Half of the 256 possible rules map onto the other half because of left-right symmetry. We can map half of them again because of black-white equivalence, so we are left with 64 rule types. Wolfram illustrates the action of these automata with two-dimensional patterns in which each line (along the Y axis) represents a subsequent generation of applying the rule to each cell in that line.
+
+Most of the rules are degenerate, meaning they create repetitive patterns of no interest, such as cells of a single color, or a checkerboard pattern. Wolfram calls these rules Class 1 automata. Some rules produce arbitrarily spaced streaks that remain stable, and Wolfram classifies these as belonging to Class 2. Class 3 rules are a bit more interesting in that recognizable features (e.g., triangles) appear in the resulting pattern in an essentially random order. However, it was the Class 4 automata that created the "ah ha" experience that resulted in Wolfram's decade of devotion to the topic. The Class 4 automata, of which Rule 110 is the quintessential example, produce surprisingly complex patterns that do not repeat themselves. We see artifacts such as lines at various angles, aggregations of triangles, and other interesting configurations. The resulting pattern is neither regular nor completely random. It appears to have some order, but is never predictable.
+
+Why is this important or interesting? Keep in mind that we started with the simplest possible starting point: a single black cell. The process involves repetitive application of a very simple rule3. From such a repetitive and deterministic process, one would expect repetitive and predictable behavior. There are two surprising results here. One is that the results produce apparent randomness. Applying every statistical test for randomness that Wolfram could muster, the results are completely unpredictable, and remain (through any number of iterations) effectively random. However, the results are more interesting than pure randomness, which itself would become boring very quickly. There are discernible and interesting features in the designs produced, so the pattern has some order and apparent intelligence. Wolfram shows us many examples of these images, many of which are rather lovely to look at.
+
+Wolfram makes the following point repeatedly: "Whenever a phenomenon is encountered that seems complex it is taken almost for granted that the phenomenon must be the result of some underlying mechanism that is itself complex. But my discovery that simple programs can produce great complexity makes it clear that this is not in fact correct."4
+
+I do find the behavior of Rule 110 rather delightful. However, I am not entirely surprised by the idea that simple mechanisms can produce results more complicated than their starting conditions. We've seen this phenomenon in fractals (i.e., repetitive application of a simple transformation rule on an image), chaos and complexity theory (i.e., the complex behavior derived from a large number of agents, each of which follows simple rules, an area of study that Wolfram himself has made major contributions to), and self-organizing systems (e.g., neural nets, Markov models), which start with simple networks but organize themselves to produce apparently intelligent behavior. At a different level, we see it in the human brain itself, which starts with only 12 million bytes of specification in the genome, yet ends up with a complexity that is millions of times greater than its initial specification5.
+
+It is also not surprising that a deterministic process can produce apparently random results. We have had random number generators (e.g., the "randomize" function in Wolfram's program "Mathematica") that use deterministic processes to produce sequences that pass statistical tests for randomness. These programs go back to the earliest days of computer software, e.g., early versions of Fortran. However, Wolfram does provide a thorough theoretical foundation for this observation.
+
+Wolfram goes on to describe how simple computational mechanisms can exist in nature at different levels, and that these simple and deterministic mechanisms can produce all of the complexity that we see and experience. He provides a myriad of examples, such as the pleasing designs of pigmentation on animals, the shape and markings of shells, and the patterns of turbulence (e.g., smoke in the air). He makes the point that computation is essentially simple and ubiquitous. Since the repetitive application of simple computational transformations can cause very complex phenomena, as we see with the application of Rule 110, this, according to Wolfram, is the true source of complexity in the world.
+
+My own view is that this is only partly correct. I agree with Wolfram that computation is all around us, and that some of the patterns we see are created by the equivalent of cellular automata. But a key issue is to ask is this: Just how complex are the results of Class 4 Automata?
+
+Wolfram effectively sidesteps the issue of degrees of complexity. There is no debate that a degenerate pattern such as a chessboard has no effective complexity. Wolfram also acknowledges that mere randomness does not represent complexity either, because pure randomness also becomes predictable in its pure lack of predictability. It is true that the interesting features of a Class 4 automata are neither repeating nor pure randomness, so I would agree that they are more complex than the results produced by other classes of Automata. However, there is nonetheless a distinct limit to the complexity produced by these Class 4 automata. The many images of Class 4 automata in the book all have a similar look to them, and although they are non-repeating, they are interesting (and intelligent) only to a degree. Moreover, they do not continue to evolve into anything more complex, nor do they develop new types of features. One could run these automata for trillions or even trillions of trillions of iterations, and the image would remain at the same limited level of complexity. They do not evolve into, say, insects, or humans, or Chopin preludes, or anything else that we might consider of a higher order of complexity than the streaks and intermingling triangles that we see in these images.
+
+Complexity is a continuum. In the past, I've used the word "order" as a synonym for complexity, which I have attempted to define as "information that fits a purpose."6 A completely predictable process has zero order. A high level of information alone does not necessarily imply a high level of order either. A phone book has a lot of information, but the level of order of that information is quite low. A random sequence is essentially pure information (since it is not predictable), but has no order. The output of Class 4 automata does possess a certain level of order, and they do survive like other persisting patterns. But the pattern represented by a human being has a far higher level of order or complexity. Human beings fulfill a highly demanding purpose in that they survive in a challenging ecological niche. Human beings represent an extremely intricate and elaborate hierarchy of other patterns. Wolfram regards any pattern that combines some recognizable features and unpredictable elements to be effectively equivalent to one another, but he does not show how a Class 4 automaton can ever increase its complexity, let alone to become a pattern as complex as a human being.
+
+There is a missing link here in how one gets from the interesting, but ultimately routine patterns of a cellular automaton to the complexity of persisting structures that demonstrate higher levels of intelligence. For example, these class 4 patterns are not capable of solving interesting problems, and no amount of iteration moves them closer to doing so. Wolfram would counter that a rule 110 automaton could be used as a "universal computer."7 However, by itself a universal computer is not capable of solving intelligent problems without what I would call "software." It is the complexity of the software that runs on a universal computer that is precisely the issue.
+
+One might point out that the Class 4 patterns I'm referring to result from the simplest possible cellular automata (i.e., one-dimensional, two-color, two-neighbor rules). What happens if we increase the dimensionality, e.g., go to multiple colors, or even generalize these discrete cellular automata to continuous functions? Wolfram addresses all of this quite thoroughly. The results produced from more complex automata are essentially the same as those of the very simple ones. We obtain the same sorts of interesting but ultimately quite limited patterns. Wolfram makes the interesting point that we do not need to use more complex rules to get the complexity (of Class 4 automata) in the end result. But I would make the converse point that we are unable to increase the complexity of the end result through either more complex rules or through further iteration. So cellular automata only get us so far.
+
+So how do we get from these interesting but limited patterns of Class 4 automata to those of insects, or humans or Chopin preludes? One concept we need to add is conflict, i.e., evolution. If we add another simple concept to that of Wolfram's simple cellular automata, i.e., an evolutionary algorithm, we start to get far more interesting, and more intelligent results. Wolfram would say that the Class 4 automata and an evolutionary algorithm are "computationally equivalent." But that is only true on what I could regard as the "hardware" level. On the software level, the order of the patterns produced are clearly different, and of a different order of complexity.
+
+An evolutionary algorithm can start with randomly generated potential solutions to a problem. The solutions are encoded in a digital genetic code. We then have the solutions compete with each other in a simulated evolutionary battle. The better solutions survive and procreate in a simulated sexual reproduction in which offspring solutions are created, drawing their genetic code (i.e., encoded solutions) from two parents. We can also introduce a rate of genetic mutation. Various high-level parameters of this process, such as the rate of mutation, the rate of offspring, etc., are appropriately called "God parameters" and it is the job of the engineer designing the evolutionary algorithm to set them to reasonably optimal values. The process is run for many thousands of generations of simulated evolution, and at the end of the process, one is likely to find solutions that are of a distinctly higher order than the starting conditions. The results of these evolutionary (sometimes called genetic) algorithms can be elegant, beautiful, and intelligent solutions to complex problems. They have been used, for example, to create artistic designs, designs for artificial life forms in artificial life experiments, as well as for a wide range of practical assignments such as designing jet engines. Genetic algorithms are one approach to "narrow" artificial intelligence, that is, creating systems that can perform specific functions that used to require the application of human intelligence.
+
+But something is still missing. Although genetic algorithms are a useful tool in solving specific problems, they have never achieved anything resembling "strong AI," i.e., aptitude resembling the broad, deep, and subtle features of human intelligence, particularly its powers of pattern recognition and command of language. Is the problem that we are not running the evolutionary algorithms long enough? After all, humans evolved through an evolutionary process that took billions of years. Perhaps we cannot recreate that process with just a few days or weeks or computer simulation. However, conventional genetic algorithms reach an asymptote in their level of performance, so running them for a longer period of time won't help.
+
+A third level (beyond the ability of cellular processes to produce apparent randomness and genetic algorithms to produce focused intelligent solutions) is to perform evolution on multiple levels. Conventional genetic algorithms only allow evolution within the narrow confines of a narrow problem, and a single means of evolution. The genetic code itself needs to evolve; the rules of evolution need to evolve. Nature did not stay with a single chromosome, for example. There have been many levels of indirection incorporated in the natural evolutionary process. And we require a complex environment in which evolution takes place.
+
+To build strong AI, we will short circuit this process, however, by reverse engineering the human brain, a project well under way, thereby benefiting from the evolutionary process that has already taken place. We will be applying evolutionary algorithms within these solutions just as the human brain does. For example, the fetal wiring is initially random in certain regions, with the majority of connections subsequently being destroyed during the early stages of brain maturation as the brain self-organizes to make sense of its environment and situation.
+
+But back to cellular automata. Wolfram applies his key insight, which he states repeatedly, that we obtain surprisingly complex behavior from the repeated application of simple computational transformations - to biology, physics, perception, computation, mathematics, and philosophy. Let's start with biology.
+
+Wolfram writes, "Biological systems are often cited as supreme examples of complexity in nature, and it is not uncommon for it to be assumed that their complexity must be somehow of a fundamentally higher order than other systems. . . . What I have come to believe is that many of the most obvious examples of complexity in biological systems actually have very little to do with adaptation or natural selection. And instead . . . they are mainly just another consequence of the very basic phenomenon that I have discovered. . . .that in almost any kind of system many choices of underlying rules inevitably lead to behavior of great complexity."8
+
+I agree with Wolfram that some of what passes for complexity in nature is the result of cellular-automata type computational processes. However, I disagree with two fundamental points. First, the behavior of a Class 4 automaton, as the many illustrations in the book depict, do not represent "behavior of great complexity." It is true that these images have a great deal of unpredictability (i.e., randomness). It is also true that they are not just random but have identifiable features. But the complexity is fairly modest. And this complexity never evolves into patterns that are at all more sophisticated.
+
+Wolfram considers the complexity of a human to be equivalent to that a Class 4 automaton because they are, in his terminology, "computationally equivalent." But class 4 automata and humans are only computational equivalent in the sense that any two computer programs are computationally equivalent, i.e., both can be run on a Universal Turing machine. It is true that computation is a universal concept, and that all software is equivalent on the hardware level (i.e., with regard to the nature of computation), but it is not the case that all software is of the same order of complexity. The order of complexity of a human is greater than the interesting but ultimately repetitive (albeit random) patterns of a Class 4 automaton.
+
+I also disagree that the order of complexity that we see in natural organisms is not a primary result of "adaptation or natural selection." The phenomenon of randomness readily produced by cellular automaton processes is a good model for fluid turbulence, but not for the intricate hierarchy of features in higher organisms. The fact that we have phenomena greater than just the interesting but fleeting patterns of fluid turbulence (e.g., smoke in the wind) in the world is precisely the result of the chaotic crucible of conflict over limited resources known as evolution.
+
+To be fair, Wolfram does not negate adaptation or natural selection, but he over-generalizes the limited power of complexity resulting from simple computational processes. When Wolfram writes, "in almost any kind of system many choices of underlying rules inevitably lead to behavior of great complexity," he is mistaking the random placement of simple features that result from cellular processes for the true complexity that has resulted from eons of evolution.
+
+Wolfram makes the valid point that certain (indeed most) computational processes are not predictable. In other words, we cannot predict future states without running the entire process. I agree with Wolfram that we can only know the answer in advance if somehow we can simulate a process at a faster speed. Given that the Universe runs at the fastest speed it can run, there is usually no way to short circuit the process. However, we have the benefits of the mill of billions of years of evolution, which is responsible for the greatly increased order of complexity in the natural world. We can now benefit from it by using our evolved tools to reverse-engineer the products of biological evolution.
+
+Yes, it is true that some phenomena in nature that may appear complex at some level are simply the result of simple underlying computational mechanisms that are essentially cellular automata at work. The interesting pattern of triangles on a "tent olive" shell or the intricate and varied patterns of a snowflake are good examples. I don't think this is a new observation, in that we've always regarded the design of snowflakes to derive from a simple molecular computation-like building process. However, Wolfram does provide us with a compelling theoretical foundation for expressing these processes and their resulting patterns. But there is more to biology than Class 4 patterns.
+
+I do appreciate Wolfram's strong argument, however, that nature is not as complex as it often appears to be. Some of the key features of the paradigm of biological systems, which differ from much of our contemporary designed technology, are that it is massively parallel, and that apparently complex behavior can result from the intermingling of a vast number of simpler systems. One example that comes to mind is Marvin Minsky's theory of intelligence as a "Society of Mind" in which intelligence may result from a hierarchy of simpler intelligences with simple agents not unlike cellular automata at the base.
+
+However, cellular automata on their own do not evolve sufficiently. They quickly reach a limited asymptote in their order of complexity. An evolutionary process involving conflict and competition is needed.
+
+For me, the most interesting part of the book is Wolfram's thorough treatment of computation as a simple and ubiquitous phenomenon. Of course, we've known for over a century that computation is inherently simple, i.e., we can build any possible level of complexity from a foundation of the simplest possible manipulations of information.
+
+For example, Babbage's computer provided only a handful of operation codes, yet provided (within its memory capacity and speed) the same kinds of transformations as do modern computers. The complexity of Babbage's invention stemmed only from the details of its design, which indeed proved too difficult for Babbage to implement using the 19th century mechanical technology available to him.
+
+The "Turing Machine," Alan Turing's theoretical conception of a universal computer in 1950, provides only 7 very basic commands9, yet can be organized to perform any possible computation. The existence of a "Universal Turing Machine," which can simulate any possible Turing Machine (that is described on its tape memory), is a further demonstration of the universality (and simplicity) of computation. In what is perhaps the most impressive analysis in his book, Wolfram shows how a Turing Machine with only two states and five possible colors can be a Universal Turing Machine. For forty years, we've thought that a Universal Turing Machine had to be more complex than this10. Also impressive is Wolfram's demonstration that Cellular Automaton Rule 110 is capable of universal computation (given the right software).
+
+In my 1990 book, I showed how any computer could be constructed from "a suitable number of [a] very simple device," namely the "nor" gate11. This is not exactly the same demonstration as a universal Turing machine, but it does demonstrate that any computation can be performed by a cascade of this very simple device (which is simpler than Rule 110), given the right software (which would include the connection description of the nor gates).12
+
+The most controversial thesis in Wolfram's book is likely to be his treatment of physics, in which he postulates that the Universe is a big cellular-automaton computer. Wolfram is hypothesizing that there is a digital basis to the apparently analog phenomena and formulas in physics, and that we can model our understanding of physics as the simple transformations of a cellular automaton.
+
+Others have postulated this possibility. Richard Feynman wondered about it in considering the relationship of information to matter and energy. Norbert Weiner heralded a fundamental change in focus from energy to information in his 1948 book Cybernetics, and suggested that the transformation of information, not energy, was the fundamental building block for the Universe.
+
+Perhaps the most enthusiastic proponent of an information-based theory of physics was Edward Fredkin, who in the early 1980s proposed what he called a new theory of physics based on the idea that the Universe was comprised ultimately of software. We should not think of ultimate reality as particles and forces, according to Fredkin, but rather as bits of data modified according to computation rules.
+
+Fredkin is quoted by Robert Wright in the 1980s as saying "There are three great philosophical questions. What is life? What is consciousness and thinking and memory and all that? And how does the Universe work? The informational viewpoint encompasses all three. . . . What I'm saying is that at the most basic level of complexity an information process runs what we think of as physics. At the much higher level of complexity, life, DNA - you know, the biochemical functions - are controlled by a digital information process. Then, at another level, our thought processes are basically information processing. . . . I find the supporting evidence for my beliefs in ten thousand different places, and to me it's just totally overwhelming. It's like there's an animal I want to find. I've found his footprints. I've found his droppings. I've found the half-chewed food. I find pieces of his fur, and so on. In every case it fits one kind of animal, and it's not like any animal anyone's ever seen. People say, where is this animal? I say, Well he was here, he's about this big, this that, and the other. And I know a thousand things about him. I don't have him in hand, but I know he's there. . . . What I see is so compelling that it can't be a creature of my imagination."13
+
+In commenting on Fredkin's theory of digital physics, Robert Wright writes, "Fredkin . . . is talking about an interesting characteristic of some computer programs, including many cellular automata: there is no shortcut to finding out what they will lead to. This, indeed, is a basic difference between the "analytical" approach associated with traditional mathematics, including differential equations, and the "computational" approach associated with algorithms. You can predict a future state of a system susceptible to the analytic approach without figuring out what states it will occupy between now and then, but in the case of many cellular automata, you must go through all the intermediate states to find out what the end will be like: there is no way to know the future except to watch it unfold. . . There is no way to know the answer to some question any faster than what's going on. . . . Fredkin believes that the Universe is very literally a computer and that it is being used by someone, or something, to solve a problem. It sounds like a good-news / bad-news joke: the good news is that our lives have purpose; the bad news is that their purpose is to help some remote hacker estimate pi to nine jillion decimal places."14
+
+Fredkin went on to show that although energy is needed for information storage and retrieval, we can arbitrarily reduce the energy required to perform any particular example of information processing, and there is no lower limit to the amount of energy required15. This result made plausible the view that information rather than matter and energy should be regarded as the more fundamental reality.
+
+I discussed Weiner's and Fredkin's view of information as the fundamental building block for physics and other levels of reality in my 1990 book The Age of Intelligent Machines16.
+
+The complexity of casting all of physics in terms of computational transformations proved to be an immensely challenging project, but Fredkin has continued his efforts.17 Wolfram has devoted a considerable portion of his efforts over the past decade to this notion, apparently with only limited communication with some of the others in the physics community who are also pursuing the idea.
+
+Wolfram's stated goal "is not to present a specific ultimate model for physics,"18 but in his "Note for Physicists,"19 which essentially equates to a grand challenge, Wolfram describes the "features that [he] believe[s] such a model will have."
+
+In The Age of Intelligent Machines, I discuss "the question of whether the ultimate nature of reality is analog or digital," and point out that "as we delve deeper and deeper into both natural and artificial processes, we find the nature of the process often alternates between analog and digital representations of information."20 As an illustration, I noted how the phenomenon of sound flips back and forth between digital and analog representations. In our brains, music is represented as the digital firing of neurons in the cochlear representing different frequency bands. In the air and in the wires leading to loudspeakers, it is an analog phenomenon. The representation of sound on a music compact disk is digital, which is interpreted by digital circuits. But the digital circuits consist of thresholded transistors, which are analog amplifiers. As amplifiers, the transistors manipulate individual electrons, which can be counted and are, therefore, digital, but at a deeper level are subject to analog quantum field equations.21 At a yet deeper level, Fredkin, and now Wolfram, are theorizing a digital (i.e., computational) basis to these continuous equations. It should be further noted that if someone actually does succeed in establishing such a digital theory of physics, we would then be tempted to examine what sorts of deeper mechanisms are actually implementing the computations and links of the cellular automata. Perhaps, underlying the cellular automata that run the Universe are yet more basic analog phenomena, which, like transistors, are subject to thresholds that enable them to perform digital transactions.
+
+Thus establishing a digital basis for physics will not settle the philosophical debate as to whether reality is ultimately digital or analog. Nonetheless, establishing a viable computational model of physics would be a major accomplishment. So how likely is this?
+
+We can easily establish an existence proof that a digital model of physics is feasible, in that continuous equations can always be expressed to any desired level of accuracy in the form of discrete transformations on discrete changes in value. That is, after all, the basis for the fundamental theorem of calculus22. However, expressing continuous formulas in this way is an inherent complication and would violate Einstein's dictum to express things "as simply as possible, but no simpler." So the real question is whether we can express the basic relationships that we are aware of in more elegant terms, using cellular-automata algorithms. One test of a new theory of physics is whether it is capable of making verifiable predictions. In at least one important way that might be a difficult challenge for a cellular automata-based theory because lack of predictability is one of the fundamental features of cellular automata.
+
+Wolfram starts by describing the Universe as a large network of nodes. The nodes do not exist in "space," but rather space, as we perceive it, is an illusion created by the smooth transition of phenomena through the network of nodes. One can easily imagine building such a network to represent "naïve" (i.e., Newtonian) physics by simply building a three-dimensional network to any desired degree of granularity. Phenomena such as "particles" and "waves" that appear to move through space would be represented by "cellular gliders," which are patterns that are advanced through the network for each cycle of computation. Fans of the game of "Life" (a popular game based on cellular automata) will recognize the common phenomenon of gliders, and the diversity of patterns that can move smoothly through a cellular automaton network. The speed of light, then, is the result of the clock speed of the celestial computer since gliders can only advance one cell per cycle.
+
+Einstein's General Relativity, which describes gravity as perturbations in space itself, as if our three-dimensional world were curved in some unseen fourth dimension, is also straightforward to represent in this scheme. We can imagine a four-dimensional network and represent apparent curvatures in space in the same way that one represents normal curvatures in three-dimensional space. Alternatively, the network can become denser in certain regions to represent the equivalent of such curvature.
+
+A cellular-automata conception proves useful in explaining the apparent increase in entropy (disorder) that is implied by the second law of thermodynamics. We have to assume that the cellular-automata rule underlying the Universe is a Class 4 rule (otherwise the Universe would be a dull place indeed). Wolfram's primary observation that a Class 4 cellular automaton quickly produces apparent randomness (despite its determinate process) is consistent with the tendency towards randomness that we see in Brownian motion, and that is implied by the second law.
+
+Special relativity is more difficult. There is an easy mapping from the Newtonian model to the cellular network. But the Newtonian model breaks down in special relativity. In the Newtonian world, if a train is going 80 miles per hour, and I drive behind it on a nearby road at 60 miles per hour, the train will appear to pull away from me at a speed of 20 miles per hour. But in the world of special relativity, if I leave Earth at a speed of three-quarters of the speed of light, light will still appear to me to move away from me at the full speed of light. In accordance with this apparently paradoxical perspective, both the size and subjective passage of time for two observers will vary depending on their relative speed. Thus our fixed mapping of space and nodes becomes considerably more complex. Essentially each observer needs his own network. However, in considering special relativity, we can essentially apply the same conversion to our "Newtonian" network as we do to Newtonian space. However, it is not clear that we are achieving greater simplicity in representing special relativity in this way.
+
+A cellular node representation of reality may have its greatest benefit in understanding some aspects of the phenomenon of quantum mechanics. It could provide an explanation for the apparent randomness that we find in quantum phenomena. Consider, for example, the sudden and apparently random creation of particle-antiparticle pairs. The randomness could be the same sort of randomness that we see in Class 4 cellular automata. Although predetermined, the behavior of Class 4 automata cannot be anticipated (other than by running the cellular automata) and is effectively random.
+
+This is not a new view, and is equivalent to the "hidden variables" formulation of quantum mechanics, which states that there are some variables that we cannot otherwise access that control what appears to be random behavior that we can observe. The hidden variables conception of quantum mechanics is not inconsistent with the formulas for quantum mechanics. It is possible, but is not popular, however, with quantum physicists because it requires a large number of assumptions to work out in a very particular way. However, I do not view this as a good argument against it. The existence of our Universe is itself very unlikely and requires many assumptions to all work out in a very precise way. Yet here we are.
+
+A bigger question is how could a hidden-variables theory be tested? If based on cellular automata-like processes, the hidden variables would be inherently unpredictable, even if deterministic. We would have to find some other way to "unhide" the hidden variables.
+
+Wolfram's network conception of the Universe provides a potential perspective on the phenomenon of quantum entanglement and the collapse of the wave function. The collapse of the wave function, which renders apparently ambiguous properties of a particle (e.g., its location) retroactively determined, can be viewed from the cellular network perspective as the interaction of the observed phenomenon with the observer itself. As observers, we are not outside the network, but exist inside it. We know from cellular mechanics that two entities cannot interact without both being changed, which suggests a basis for wave function collapse.
+
+Wolfram writes that "If the Universe is a network, then it can in a sense easily contain threads that continue to connect particles even when the particles get far apart in terms of ordinary space." This could provide an explanation for recent dramatic experiments showing nonlocality of action in which two "quantum entangled" particles appear to continue to act in concert with one another even though separated by large distances. Einstein called this "spooky action at a distance" and rejected it, although recent experiments appear to confirm it.
+
+Some phenomena fit more neatly into this cellular-automata network conception than others. Some of the suggestions appear elegant, but as Wolfram's "Note for Physicists" makes clear, the task of translating all of physics into a consistent cellular automata-based system is daunting indeed.
+
+Extending his discussion to philosophy, Wolfram "explains" the apparent phenomenon of free will as decisions that are determined but unpredictable. Since there is no way to predict the outcome of a cellular process without actually running the process, and since no simulator could possibly run faster than the Universe itself, there is, therefore, no way to reliably predict human decisions. So even though our decisions are determined, there is no way to predetermine what these decisions will be. However, this is not a fully satisfactory examination of the concept. This observation concerning the lack of predictability can be made for the outcome of most physical processes, e.g., where a piece of dust will fall onto the ground. This view thereby equates human free will with the random descent of a piece of dust. Indeed, that appears to be Wolfram's view when he states that the process in the human brain is "computationally equivalent" to those taking place in processes such as fluid turbulence.
+
+Although I will not attempt a full discussion of this issue here, it should be noted that it is difficult to explore concepts such as free will and consciousness in a strictly scientific context because these are inherently first-person subjective phenomena, whereas science is inherently a third person objective enterprise. There is no such thing as the first person in science, so inevitably concepts such as free will and consciousness end up being meaningless. We can either view these first person concepts as mere illusions, as many scientists do, or we can view them as the appropriate province of philosophy, which seeks to expand beyond the objective framework of science.
+
+There is a philosophical perspective to Wolfram's treatise that I do find powerful. My own philosophy is that of a "patternist," which one might consider appropriate for a pattern recognition scientist. In my view, the fundamental reality in the world is not stuff, but patterns.
+
+If I ask the question, 'Who am I?' I could conclude that, perhaps I am this stuff here, i.e., the ordered and chaotic collection of molecules that comprise my body and brain.
+
+However, the specific set of particles that comprise my body and brain are completely different from the atoms and molecules than comprised me only a short while (on the order of weeks) ago. We know that most of our cells are turned over in a matter of weeks. Even those that persist longer (e.g., neurons) nonetheless change their component molecules in a matter of weeks.
+
+So I am a completely different set of stuff than I was a month ago. All that persists is the pattern of organization of that stuff. The pattern changes also, but slowly and in a continuum from my past self. From this perspective I am rather like the pattern that water makes in a stream as it rushes past the rocks in its path. The actual molecules (of water) change every millisecond, but the pattern persists for hours or even years.
+
+It is patterns (e.g., people, ideas) that persist, and in my view constitute the foundation of what fundamentally exists. The view of the Universe as a cellular automaton provides the same perspective, i.e., that reality ultimately is a pattern of information. The information is not embedded as properties of some other substrate (as in the case of conventional computer memory) but rather information is the ultimate reality. What we perceive as matter and energy are simply abstractions, i.e., properties of patterns. As a further motivation for this perspective, it is useful to point out that, based on my research, the vast majority of processes underlying human intelligence are based on the recognition of patterns.
+
+However, the intelligence of the patterns we experience in both the natural and human-created world is not primarily the result of Class 4 cellular automata processes, which create essentially random assemblages of lower level features. Some people have commented that they see ghostly faces and other higher order patterns in the many examples of Class 4 images that Wolfram provides, but this is an indication more of the intelligence of the observer than of the pattern being observed. It is our human nature to anthropomorphize the patterns we encounter. This phenomenon has to do with the paradigm our brain uses to perform pattern recognition, which is a method of "hypothesize and test." Our brains hypothesize patterns from the images and sounds we encounter, followed by a testing of these hypotheses, e.g., is that fleeting image in the corner of my eye really a predator about to attack? Sometimes we experience an unverifiable hypothesis that is created by the inevitable accidental association of lower-level features.
+
+Some of the phenomena in nature (e.g., clouds, coastlines) are explained by repetitive simple processes such as cellular automata and fractals, but intelligent patterns (e.g., the human brain) require an evolutionary process (or, alternatively the reverse-engineering of the results of such a process). Intelligence is the inspired product of evolution, and is also, in my view, the most powerful "force" in the world, ultimately transcending the powers of mindless natural forces.
+
+In summary, Wolfram's sweeping and ambitious treatise paints a compelling but ultimately overstated and incomplete picture. Wolfram joins a growing community of voices that believe that patterns of information, rather than matter and energy, represent the more fundamental building blocks of reality. Wolfram has added to our knowledge of how patterns of information create the world we experience and I look forward to a period of collaboration between Wolfram and his colleagues so that we can build a more robust vision of the ubiquitous role of algorithms in the world.
+
+The lack of predictability of Class 4 cellular automata underlies at least some of the apparent complexity of biological systems, and does represent one of the important biological paradigms that we can seek to emulate in our human-created technology. It does not explain all of biology. It remains at least possible, however, that such methods can explain all of physics. If Wolfram, or anyone else for that matter, succeeds in formulating physics in terms of cellular-automata operations and their patterns, then Wolfram's book will have earned its title. In any event, I believe the book to be an important work of ontology.
+
+1 Wolfram, A New Kind of Science, page 2.
+
+2 Ibid, page 849.
+
+3 Rule 110 states that a cell becomes white if its previous color and its two neighbors are all black or all white or if its previous color was white and the two neighbors are black and white respectively; otherwise the cell becomes black.
+
+4 Wolfram, A New Kind of Science, page 4.
+
+5 The genome has 6 billion bits, which is 800 million bytes, but there is enormous repetition, e.g., the sequence "ALU" which is repeated 300,000 times. Applying compression to the redundancy, the genome is approximately 23 million bytes compressed, of which about half specifies the brain's starting conditions. The additional complexity (in the mature brain) comes from the use of stochastic (i.e., random within constraints) processes used to initially wire specific areas of the brain, followed by years of self-organization in response to the brain's interaction with its environment.
+
+6 See my book The Age of Spiritual Machines, When Computers Exceed Human Intelligence (Viking, 1999), the section titled "Disdisorder" and "The Law of Increasing Entropy Versus the Growth of Order" on pages 30 - 33.
+
+7 A computer that can accept as input the definition of any other computer and then simulate that other computer. It does not address the speed of simulation, which might be slow in comparison to the computer being simulated.
+
+8 Wolfram, A New Kind of Science, page 383.
+
+9 The seven commands of a Turing Machine are: (i) Read Tape, (ii) Move Tape Left, (iii) Move Tape Right, (iv) Write 0 on the Tape, (v) Write 1 on the Tape, (vi) Jump to another command, and (vii) Halt.
+
+10 As Wolfram points out, the previous simplest Universal Turing machine, presented in 1962, required 7 states and 4 colors. See Wolfram, A New Kind of Science, pages 706 - 710.
+
+11 The "nor" gate transforms two inputs into one output. The output of "nor" is true if an only if neither A nor B are true.
+
+12 See my book The Age of Intelligent Machines, section titled "A nor B: The Basis of Intelligence?," pages 152 - 157.
+
+13 Edward Fredkin, as quoted in Did the Universe Just Happen by Robert Wright.
+
+14 Ibid.
+
+15 Many of Fredkin's results come from studying his own model of computation, which explicitly reflects a number of fundamental principles of physics. See the classic Edward Fredkin and Tommaso Toffoli, "Conservative Logic," International Journal of Theoretical Physics 21, numbers 3-4 (1982). Also, a set of concerns about the physics of computation analytically similar to those of Fredkin's may be found in Norman Margolus, "Physics and Computation," Ph.D. thesis, MIT.
+
+16 See The Age of Intelligent Machines, section titled "Cybernetics: A new weltanschauung," pages 189 - 198.
+
+17 See the web site: www.digitalphilosophy.org, including Ed Fredkin's essay "Introduction to Digital Philosophy." Also, the National Science Foundation sponsored a workshop during the Summer of 2001 titled "The Digital Perspective," which covered some of the ideas discussed in Wolfram's book. The workshop included Ed Fredkin Norman Margolus, Tom Toffoli, Charles Bennett, David Finkelstein, Jerry Sussman, Tom Knight, and Physics Nobel Laureate Gerard 't Hooft. The workshop proceedings will be published soon, with Tom Toffoli as editor.
+
+18 Stephen Wolfram, A New Kind of Science, page 1,043.
+
+19 Ibid, pages 1,043 - 1,065.
+
+20 The Age of Intelligent Machines, pages 192 - 198.
+
+21 Ibid.
+
+22 The fundamental theorem of calculus establishes that differentiation and integration are inverse operations.
